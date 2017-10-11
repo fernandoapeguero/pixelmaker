@@ -1,20 +1,33 @@
-let colorSelected , gridWidth , gridzHeight;
+
 const canvas = document.getElementById("pixel_canvas");
 // Select color input
- colorSelected = document.getElementById("colorPicker").value;
+
 
 // Select size input
+  var colorSelected = document.getElementById("colorPicker").value;
 
- gridWidth = document.getElementById("input_width").value;
-
- gridzHeight = document.getElementById("input_height").value;
-
-// When size is submitted by the user, call makeGrid()
 let picker =  document.getElementById("sizePicker");
-picker.addEventListener("submit" ,makeGrid());
+var hasSquare = false;
 
-function makeGrid() {
+document.getElementById("")
 
+
+
+    picker.addEventListener('submit' ,function(event){
+    event.preventDefault();
+     while(canvas.firstChild){
+     	canvas.removeChild(canvas.firstChild);
+     }
+    var gridWidth = document.getElementById("input_width").value;
+
+    var gridzHeight = document.getElementById("input_height").value;
+	makeGrid(gridWidth , gridzHeight );
+});
+// When size is submitted by the user, call makeGrid()
+
+
+function makeGrid(gridWidth , gridzHeight) {
+hasSquare = true
 // Your code goes here!
 for(let r = 0 ; r < gridWidth ; r++){
 	let row = document.createElement("tr");
