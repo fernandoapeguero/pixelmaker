@@ -1,39 +1,32 @@
-
 const canvas = document.getElementById("pixel_canvas");
 // Select color input
-// Select size input
- var colorSelected = document.getElementById("colorPicker").value;
+let picker = document.getElementById("sizePicker");
 
-let picker =  document.getElementById("sizePicker");
-
-    picker.addEventListener('submit' ,function(event){
+picker.addEventListener('submit', function(event) {
     event.preventDefault();
-     while(canvas.firstChild){
-     	canvas.removeChild(canvas.firstChild);
-     }
+    while (canvas.firstChild) {
+        canvas.removeChild(canvas.firstChild);
+    }
     var gridWidth = document.getElementById("input_width").value;
 
     var gridzHeight = document.getElementById("input_height").value;
-	makeGrid(gridWidth , gridzHeight );
+    makeGrid(gridWidth, gridzHeight);
 });
 
 // When size is submitted by the user, call makeGrid()
 
-function makeGrid(gridWidth , gridzHeight ) {
-// Your code goes here!
-for(let r = 0 ; r < gridWidth ; r++){
-	let row = document.createElement("tr");
-	for(let column = 0 ; column < gridzHeight;column++){
-      let column = document.createElement("td");
+function makeGrid(gridWidth, gridzHeight) {
+    // Your code goes here!
+    for (let r = 0; r < gridzHeight; r++) {
+        const row = canvas.insertRow(r);
+        for (let column = 0; column < gridWidth; column++) {
+            const cell = row.insertCell(column);
 
-       row.appendChild(column);
+            cell.addEventListener("mousedown", function(event) {
+                event.preventDefault;
 
-       column.addEventListener("click" , function(event){
-        event.preventDefault;
-      this.style.backgroundColor = document.getElementById("colorPicker").value;
-    });
-	}
-
-	canvas.appendChild(row);
-}
+                cell.style.backgroundColor = document.getElementById("colorPicker").value;
+            });
+        }
+    }
 }
